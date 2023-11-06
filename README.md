@@ -22,20 +22,18 @@ Dolayısıyla, bir belge(text data) verildiğinde LDA, belgeyi temel alarak her 
 ## Kurulum
 Projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyiniz:
 
-1.
 
-   ```bash
+```bash
    git clone https://github.com/uysal-uysal/topic-modeling.git
+``` 
 
-2.
-    ```bash
-    cd topic-modeling
-    ```
+```bash
+  cd topic-modeling
+```
 
-3.
-    ```bash
-    pip install -r requirements.txt
-    ```
+```bash
+  pip install -r requirements.txt
+```
 
    - [[Gensim](https://radimrehurek.com/gensim/)] [[pandas](https://pandas.pydata.org/)] [[pyshorteners](https://pypi.org/project/pyshorteners/)] [[requests](https://requests.readthedocs.io/en/latest/)] [[beautifulsoup4](https://pypi.org/project/beautifulsoup4/)] [[tabulate](https://pypi.org/project/tabulate/)]
   
