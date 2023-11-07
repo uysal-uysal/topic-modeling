@@ -136,15 +136,13 @@ class TextProcessor:
 
     @staticmethod
     def word_tokenize(sentence):
-        # define regular expressions for different types of words and patterns
-        acronym_each_dot = r"(?:[a-z]+\.){2,}"
-        acronym_end_dot = r"\b[a-z]+\."
-        suffixes = r"[a-z]+['’]?[a-z]*"
+        acronym_each_dot = r"(?:[a-zğüşıöç]+\.){2,}"
+        acronym_end_dot = r"\b[a-zğüşıöç]+\."
+        suffixes = r"[a-zğüşıöç]+['’]?[a-zğüşıöç]*"
         numbers = r"\d+[.,:\d]*"
-        any_word = r"[a-z]+"
-        punctuations = r"[a-z]*[.,!?;:]"
+        any_word = r"[a-zğüşıöç]+"
+        punctuations = r"[a-zğüşıöç]*[.,!?;:]"
 
-        # combine patterns using the (or) operator
         word_regex = "|".join([acronym_each_dot,
                                acronym_end_dot,
                                suffixes,
@@ -152,8 +150,8 @@ class TextProcessor:
                                any_word,
                                punctuations])
 
-        sentence = re.compile("%s" % word_regex, re.I).findall(sentence)
-        return sentence
+        words = re.compile(word_regex, re.I).findall(sentence)
+        return words
 
     def initial_clean(self, text):
         text = text.translate(str.maketrans('', '', string.punctuation))
@@ -234,8 +232,13 @@ class LDAModel:
                         wp = self.lda_model.show_topic(topic_num, topn=30)
 
                         all_keywords = ", ".join([word for word, prop in wp])
-                        topic_keywords = ", ".join([word for word, prop in wp[:5]])
-                        subtopic_keywords = ", ".join([word for word, prop in wp[5:]])
+
+                        # topic - subtopic threshold
+                        threshold = 0.40
+                        keywords_list = all_keywords.split(", ")
+
+                        topic_keywords = ", ".join(keywords_list[:int(len(keywords_list) * threshold)])
+                        subtopic_keywords = ", ".join(keywords_list[int(len(keywords_list) * threshold):])
 
                         # create new row with input text, dominant topic number, contribution, keywords, and links
                         sent_topics_df = sent_topics_df._append(
