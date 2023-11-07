@@ -1,3 +1,6 @@
+# Proje Dosyaları: [Drive](https://drive.google.com/drive/folders/1XNWRxpuT98uWEOxUL9GAfP6o-lyZEnpk?usp=sharing), [Doküman](https://docs.google.com/document/d/1k_tc0g76ZWDk6VFjyQqPBQ4f-EwasmJigbGMd1aFwCo/edit?usp=sharing)
+
+
 ### Topic Modeling & Latent Dirichlet Allocation
 Topic Modeling, bir metin belgesinde “topics” adı verilen kelime gruplarını bulmak için kullanılan 'unsupervised' bir yaklaşımdır. Bu konular, sık sık birlikte ortaya çıkan ve genellikle ortak bir temayı paylaşan kelimelerden oluşur. 
 
@@ -20,6 +23,10 @@ Dolayısıyla, bir belge(text data) verildiğinde LDA, belgeyi temel alarak her 
 
 
 ## Kurulum
+
+```bash
+   required python version==3.10
+``` 
 Projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyiniz:
 
 
